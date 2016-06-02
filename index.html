@@ -4,11 +4,8 @@
     <title>CoolNEWS RSS reader</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css" type="text/css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
 
@@ -31,12 +28,17 @@
             <div class="form-group">
                 <label for="url">New RSS feed source url</label>
                 <input type="url" class="form-control" id="url" placeholder="https://sg.hu/plain/rss_it.xml">
-                <label for="newsCount">Number of news to show from the feed</label>
-                <input type="number" class="form-control" id="newsCount" placeholder="5">
             </div>
-            <button type="button" class="btn btn-primary">Add</button>
+            <div class="form-group">
+                <label for="newsCount">Number of news to show from the feed</label>
+                <input type="number" class="form-control" id="newsCount" placeholder="5" min="1" max="10">
+            </div>
+            <button type="submit" class="btn btn-primary" id="addButton">Add</button>
         </div>
     </div>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
