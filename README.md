@@ -11,7 +11,9 @@ As a user I would like to browse my registered news resources' fresh articles in
 
 I would like to be able to add new sites' RSS feeds as resources which are stored after that I close my web browser.
 
-I would like to be able to select a concrete source and read only the articles come from there. If I don't choose a particular source than all articles need to be shown ordered by date.  
+I would like to be able to select a concrete source and read only the articles come from there. If I don't choose a particular source than all articles need to be shown ordered by date.
+
+I would like to set some of the sites as my favorite so I can see the articles from there in a highlighted way.
 
 ---
 ## Feature Set:
