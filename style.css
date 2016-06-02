@@ -1,0 +1,11 @@
+body {
+    background-image: url('http://s3.amazonaws.com/codecademy-content/courses/ltp2/img/uber/bg.png');
+}
+
+div {
+    background-color: aliceblue;
+    width: 100px;
+    height: 100px;
+}
+
+/*background: #202024 url('http://s3.amazonaws.com/codecademy-content/courses/ltp2/img/uber/black-thread.png') repeat left top;*/
