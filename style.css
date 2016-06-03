@@ -1,16 +1,22 @@
-#newsCount {
-    width: 70px;
-}
-
-#url,
-#newsCount {
-    margin-bottom: 15px;
-}
-
 .redBorder {
     border-color: red;
 }
 
 .greenBorder {
     border-color: green;
+}
+
+#newsCountGroup,
+#feedNameGroup,
+#addButton {
+    display: inline-block;
+}
+
+#addButton {
+    position: relative;
+    top: -1px;
+}
+
+#feedNameGroup {
+    width: 244px;
 }
