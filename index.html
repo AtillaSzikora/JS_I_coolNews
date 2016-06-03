@@ -25,19 +25,21 @@
 
     <div class="container">
         <div class="jumbotron">
-            <div class="form-group" id="urlGroup">
-                <label for="url">New RSS feed source url</label>
-                <input type="url" class="form-control" id="url" placeholder="https://sg.hu/plain/rss_it.xml">
+            <div id="form">
+                <div class="form-group" id="urlGroup">
+                    <label class="control-label" for="url">New RSS feed source url</label>
+                    <input type="url" class="form-control" id="url" placeholder="https://sg.hu/plain/rss_it.xml">
+                </div>
+                <div class="form-group" id="feedNameGroup">
+                    <label class="control-label" for="feedName">Feed name</label>
+                    <input type="text" class="form-control" id="feedName">
+                </div>
+                <div class="form-group" id="newsCountGroup">
+                    <label class="control-label" for="newsCount">News to show</label>
+                    <input type="number" class="form-control" id="newsCount">
+                </div>
+                <input type="button" class="btn btn-primary" id="addButton" value="Add" disabled>
             </div>
-            <div class="form-group" id="feedNameGroup">
-                <label for="feedName">Feed name</label>
-                <input type="text" class="form-control" id="feedName">
-            </div>
-            <div class="form-group" id="newsCountGroup">
-                <label for="newsCount">News to show</label>
-                <input type="number" class="form-control" id="newsCount">
-            </div>
-            <input type="button" class="btn btn-primary" id="addButton" value="Add" disabled>
         </div>
     </div>
 
