@@ -1,50 +1,49 @@
 var url = document.getElementById("url");
-var feedName = document.getElementById('feedName');
+var feedName = document.getElementById("feedName");
 var newsCount = document.getElementById("newsCount");
 var addButton = document.getElementById("addButton");
-newsCount.value = 5;
+var feedArray = [];
 
 function disableButton() {
     addButton.disabled = !!(newsCount.value < 1
                          || feedName.value.length == 0
                          || url.checkValidity() == false
-                         || url.value.substring(url.value.length - 4) != ".xml");
-}
+                         || url.value.substring(url.value.length - 4) != ".xml"); }
 
 function urlBorderColor() {
     if (url.checkValidity() == false ||
         url.value.substring(url.value.length - 4) != ".xml") {
         url.parentNode.classList.remove("has-success");
-        url.parentNode.classList.add("has-error");
-    }
+        url.parentNode.classList.add("has-error"); }
     else {
         url.parentNode.classList.remove("has-error");
-        url.parentNode.classList.add("has-success");
-    }
-}
+        url.parentNode.classList.add("has-success"); } }
 
 function feedNameBorderColor() {
     if (feedName.value.length == 0) {
         feedName.parentNode.classList.remove("has-success");
-        feedName.parentNode.classList.add("has-error");
-    }
+        feedName.parentNode.classList.add("has-error"); }
     else {
         feedName.parentNode.classList.remove("has-error");
-        feedName.parentNode.classList.add("has-success");
-    }
-}
+        feedName.parentNode.classList.add("has-success"); } }
 
 function newsCountBorderColor() {
     if (newsCount.value < 1) {
         newsCount.parentNode.classList.remove("has-success");
-        newsCount.parentNode.classList.add("has-error");
-    }
+        newsCount.parentNode.classList.add("has-error"); }
     else {
         newsCount.parentNode.classList.remove("has-error");
-        newsCount.parentNode.classList.add("has-success");
-    }
-}
+        newsCount.parentNode.classList.add("has-success"); } }
 
+function addFeedToArray(){
+    var feed = {
+        url: url.value,
+        name: feedName.value,
+        newsCount: newsCount.value };
+    feedArray.push(feed);
+    console.log(feedArray); }
+
+newsCount.value = 5;
 url.addEventListener("blur", disableButton);
 url.addEventListener("blur", urlBorderColor);
 feedName.addEventListener("blur", disableButton);
@@ -53,3 +52,4 @@ newsCount.addEventListener("keyup", disableButton);
 newsCount.addEventListener("keyup", newsCountBorderColor);
 newsCount.addEventListener("click", disableButton);
 newsCount.addEventListener("click", newsCountBorderColor);
+addButton.addEventListener("click", addFeedToArray);
