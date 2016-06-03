@@ -1,11 +1,22 @@
-body {
-    background-image: url('http://s3.amazonaws.com/codecademy-content/courses/ltp2/img/uber/bg.png');
+.redBorder {
+    border-color: red;
 }
 
-div {
-    background-color: aliceblue;
-    width: 100px;
-    height: 100px;
+.greenBorder {
+    border-color: green;
 }
 
-/*background: #202024 url('http://s3.amazonaws.com/codecademy-content/courses/ltp2/img/uber/black-thread.png') repeat left top;*/
+#newsCountGroup,
+#feedNameGroup,
+#addButton {
+    display: inline-block;
+}
+
+#addButton {
+    position: relative;
+    top: -1px;
+}
+
+#feedNameGroup {
+    width: 244px;
+}
