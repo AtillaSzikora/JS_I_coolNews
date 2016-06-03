@@ -1,9 +1,12 @@
 var url = document.getElementById("url");
+var feedName = document.getElementById('feedName');
 var newsCount = document.getElementById("newsCount");
 var addButton = document.getElementById("addButton");
+newsCount.value = 5;
 
 function disableButton() {
     addButton.disabled = !!(newsCount.value < 1
+                         || feedName.value.length == 0
                          || url.checkValidity() == false
                          || url.value.substring(url.value.length - 4) != ".xml");
 }
@@ -20,6 +23,17 @@ function urlBorderColor() {
     }
 }
 
+function feedNameBorderColor() {
+    if (feedName.value.length == 0) {
+        feedName.parentNode.classList.remove("has-success");
+        feedName.parentNode.classList.add("has-error");
+    }
+    else {
+        feedName.parentNode.classList.remove("has-error");
+        feedName.parentNode.classList.add("has-success");
+    }
+}
+
 function newsCountBorderColor() {
     if (newsCount.value < 1) {
         newsCount.parentNode.classList.remove("has-success");
@@ -31,10 +45,10 @@ function newsCountBorderColor() {
     }
 }
 
-url.addEventListener("keyup", disableButton);
-url.addEventListener("keyup", urlBorderColor);
-url.addEventListener("click", disableButton);
-url.addEventListener("click", urlBorderColor);
+url.addEventListener("blur", disableButton);
+url.addEventListener("blur", urlBorderColor);
+feedName.addEventListener("blur", disableButton);
+feedName.addEventListener("blur", feedNameBorderColor);
 newsCount.addEventListener("keyup", disableButton);
 newsCount.addEventListener("keyup", newsCountBorderColor);
 newsCount.addEventListener("click", disableButton);
