@@ -41,8 +41,8 @@ function validateFeed() {
     url.addEventListener("blur", urlBorderColor);
     feedName.addEventListener("blur", disableButton);
     feedName.addEventListener("blur", feedNameBorderColor);
-    newsCount.addEventListener("keyUp", disableButton);
-    newsCount.addEventListener("keyUp", newsCountBorderColor);
+    newsCount.addEventListener("keyup", disableButton);
+    newsCount.addEventListener("keyup", newsCountBorderColor);
     newsCount.addEventListener("click", disableButton);
     newsCount.addEventListener("click", newsCountBorderColor); }
 
@@ -59,12 +59,20 @@ function addFeed() {
     function getFeedFromStorage() {
         var feedStr;
         var feedObj;
-        var feedArray;
+        var feedArray = [];
         for (var i = 1; i < localStorage.length + 1; i++) {
             feedStr = localStorage.getItem(i.toString());
             feedObj = JSON.parse(feedStr);
-            feedArray.push(feedObj); }
-        return feedArray; }
+            feedArray.push(feedObj);
+            appendFeedFields(); } }
+
+    function appendFeedFields() {
+        var feedFields = '<div class="form">\
+                            <div class="form-group"><input type="url" class="form-control"></div>\
+                            <div class="form-group"><input type="text" class="form-control"></div>\
+                            <div class="form-group"><input type="number" class="form-control"></div>\
+                          </div>';
+        $(".jumbotron").append(feedFields);}
 
     addButton.addEventListener("click", localStoreFeed);
     showFeeds.addEventListener("click", getFeedFromStorage); }
