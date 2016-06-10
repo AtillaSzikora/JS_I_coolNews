@@ -3,8 +3,7 @@
     display: inline-block;
 }
 
-#addButton,
-#showFeeds {
+#addButton {
     position: relative;
     top: -1px;
     left: 1px;
