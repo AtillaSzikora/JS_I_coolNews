@@ -72,7 +72,8 @@ function saveFeed() {
             this.parentNode.parentNode.getElementsByTagName("input")[0].readOnly = true;
             this.parentNode.parentNode.getElementsByTagName("input")[1].readOnly = true;
             this.parentNode.parentNode.getElementsByClassName("edit")[0].style.display = '';
-            this.style.display = 'none'; }) } }
+            this.style.display = 'none';
+        }) } }
 
 function deleteFeed() {
     var deleteButtonsArray = document.getElementsByClassName("delete");
