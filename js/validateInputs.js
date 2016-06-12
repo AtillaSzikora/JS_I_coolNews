@@ -34,10 +34,10 @@ function newsCountBorderColor() {
         newsCount.parentNode.classList.add("has-success"); } }
 
 newsCount.value = 5;
-url.addEventListener("blur", disableButton);
-url.addEventListener("blur", urlBorderColor);
-feedName.addEventListener("blur", disableButton);
-feedName.addEventListener("blur", feedNameBorderColor);
+url.addEventListener("keyup", disableButton);
+url.addEventListener("keyup", urlBorderColor);
+feedName.addEventListener("keyup", disableButton);
+feedName.addEventListener("keyup", feedNameBorderColor);
 newsCount.addEventListener("keyup", disableButton);
 newsCount.addEventListener("keyup", newsCountBorderColor);
 newsCount.addEventListener("click", disableButton);

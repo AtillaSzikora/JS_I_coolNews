@@ -43,7 +43,10 @@ function storeNewFeed() {
         newsCount: newsCount.value };
     var feedStr = JSON.stringify(feedObj);
     localStorage.setItem(localStorageLength, feedStr);
-    listNewFeed(); }
+    listNewFeed();
+    editFeed();
+    saveFeed();
+    deleteFeed(); }
 
 function listNewFeed() {
     container[0].insertAdjacentHTML('beforeend', formHTML);
@@ -63,7 +66,7 @@ function editFeed() {
             this.parentNode.parentNode.getElementsByTagName("input")[0].readOnly = false;
             this.parentNode.parentNode.getElementsByTagName("input")[1].readOnly = false;
             this.parentNode.parentNode.getElementsByClassName("save")[0].style.display = '';
-            this.style.display = 'none'; }) } }
+            this.style.display = 'none'; }); } }
 
 function saveFeed() {
     var saveButtonsArray = document.getElementsByClassName("save");
@@ -72,18 +75,18 @@ function saveFeed() {
             this.parentNode.parentNode.getElementsByTagName("input")[0].readOnly = true;
             this.parentNode.parentNode.getElementsByTagName("input")[1].readOnly = true;
             this.parentNode.parentNode.getElementsByClassName("edit")[0].style.display = '';
-            this.style.display = 'none';
-        }) } }
+            this.style.display = 'none'; }); } }
 
 function deleteFeed() {
     var deleteButtonsArray = document.getElementsByClassName("delete");
     for (var i = 0; i < deleteButtonsArray.length; i++) {
+        deleteButtonsArray[i].num = i;
         deleteButtonsArray[i].addEventListener("click", function() {
             this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
-        }) } }
+            localStorage.removeItem((this.num + 1).toString()); }); } }
 
-addButton.addEventListener("click", storeNewFeed);
 listFeedsFromStorage();
+addButton.addEventListener("click", storeNewFeed);
 editFeed();
 saveFeed();
 deleteFeed();
