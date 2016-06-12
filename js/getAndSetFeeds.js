@@ -16,7 +16,7 @@ var formHTML = '<form>\
                     <div class="form-group col-sm-3">\
                         <input type="button" class="btn btn-info edit" value="Edit">\
                         <input type="button" class="btn btn-info save" value="Save" style="display: none">\
-                        <input type="button" class="btn btn-danger" value="Delete">\
+                        <input type="button" class="btn btn-danger delete" value="Delete">\
                     </div>\
                 </form>';
 
@@ -74,7 +74,15 @@ function saveFeed() {
             this.parentNode.parentNode.getElementsByClassName("edit")[0].style.display = '';
             this.style.display = 'none'; }) } }
 
+function deleteFeed() {
+    var deleteButtonsArray = document.getElementsByClassName("delete");
+    for (var i = 0; i < deleteButtonsArray.length; i++) {
+        deleteButtonsArray[i].addEventListener("click", function() {
+            this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+        }) } }
+
 addButton.addEventListener("click", storeNewFeed);
 listFeedsFromStorage();
 editFeed();
 saveFeed();
+deleteFeed();
