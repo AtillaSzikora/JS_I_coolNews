@@ -15,32 +15,32 @@
                 <a class="navbar-brand" href="#">CoolNEWS RSS reader</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Register feeds</a></li>
+                <li class="active"><a href="#">Handle feeds</a></li>
                 <li><a href="#">Browse articles</a></li>
-                <li><a href="#">Select feeds</a></li>
-                <li><a href="#">Edit feeds</a></li>
             </ul>
         </div>
     </nav>
 
     <div class="container">
-        <div class="jumbotron">
-            <div class="form">
-                <div class="form-group url">
-                    <label class="control-label" for="url">RSS feed url</label>
-                    <input type="url" class="form-control" id="url" placeholder="https://sg.hu/plain/rss_it.xml">
-                </div>
-                <div class="form-group">
-                    <label class="control-label" for="feedName">RSS feed name</label>
-                    <input type="text" class="form-control" id="feedName" placeholder="name your feed">
-                </div>
-                <div class="form-group">
-                    <label class="control-label" for="newsCount">news to show</label>
-                    <input type="number" class="form-control" id="newsCount" min="1">
-                </div>
-                <input type="button" class="btn btn-primary" id="addButton" value="Add">
+        <form>
+            <div class="form-group col-sm-3">
+                <label class="control-label" for="feedName">name</label>
+                <input type="text" class="form-control" id="feedName" placeholder="name your feed">
             </div>
-        </div>
+            <div class="form-group col-sm-4">
+                <label class="control-label" for="url">url</label>
+                <input type="url" class="form-control" id="url" placeholder="https://sg.hu/plain/rss_it.xml">
+            </div>
+            <div class="form-group col-sm-2">
+                <label class="control-label" for="newsCount">counter</label>
+                <input type="number" class="form-control" id="newsCount" min="1">
+            </div>
+            <div class="form-group col-sm-3">
+                <button type="button" class="btn btn-primary" id="addButton">Add</button>
+            </div>
+        </form>
+        <div class="clearfix"></div>
+        <hr>
     </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
