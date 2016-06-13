@@ -76,11 +76,20 @@ function editFeed() {
 function saveFeed() {
     var saveButtonsArray = document.getElementsByClassName("btn-success");
     for (var i = 0; i < saveButtonsArray.length; i++) {
+        saveButtonsArray[i].num = i;
         saveButtonsArray[i].addEventListener("click", function() {
             this.parentNode.parentNode.getElementsByTagName("input")[0].readOnly = true;
             this.parentNode.parentNode.getElementsByTagName("input")[1].readOnly = true;
             this.parentNode.parentNode.getElementsByClassName("btn-info")[0].style.display = '';
-            this.style.display = 'none'; }); } }
+            this.style.display = 'none';
+            var newFeedName = this.parentNode.parentNode.getElementsByTagName("input")[0].value;
+            var newUrl = this.parentNode.parentNode.getElementsByTagName("input")[1].value;
+            var feedStr = localStorage.getItem(this.num + 1);
+            var feedObj = JSON.parse(feedStr);
+            feedObj.url = newUrl;
+            feedObj.feedName = newFeedName;
+            feedStr = JSON.stringify(feedObj);
+            localStorage.setItem(this.num + 1, feedStr); }); } }
 
 function favouriteFeed() {
     var favouriteButtonsArray = document.getElementsByClassName("fav");
