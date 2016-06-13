@@ -8,14 +8,14 @@ var formHTML = '<form>\
                     <div class="form-group col-sm-4"><input type="url" class="form-control" readonly></div>\
                     <div class="form-group col-sm-2"><input type="number" class="form-control" readonly></div>\
                     <div class="form-group col-sm-3">\
+                        <button type="button" class="btn btn-default fav" aria-label="Left Align">\
+                            <span class="glyphicon glyphicon-heart"></span>\
+                        </button>\
                         <button type="button" class="btn btn-info" aria-label="Left Align">\
                             <span class="glyphicon glyphicon-pencil"></span>\
                         </button>\
                         <button type="button" class="btn btn-success" aria-label="Left Align" style="display: none;">\
                             <span class="glyphicon glyphicon-ok"></span>\
-                        </button>\
-                        <button type="button" class="btn btn-warning" aria-label="Left Align">\
-                            <span class="glyphicon glyphicon-heart"></span>\
                         </button>\
                         <button type="button" class="btn btn-danger" aria-label="Left Align">\
                             <span class="glyphicon glyphicon-trash"></span>\
@@ -50,6 +50,7 @@ function storeNewFeed() {
     listNewFeed();
     editFeed();
     saveFeed();
+    favouriteFeed();
     deleteFeed(); }
 
 function listNewFeed() {
@@ -81,6 +82,24 @@ function saveFeed() {
             this.parentNode.parentNode.getElementsByClassName("btn-info")[0].style.display = '';
             this.style.display = 'none'; }); } }
 
+function favouriteFeed() {
+    var favouriteButtonsArray = document.getElementsByClassName("fav");
+    for (var i = 0; i < favouriteButtonsArray.length; i++) {
+        favouriteButtonsArray[i].num = i;
+        favouriteButtonsArray[i].addEventListener("click", function() {
+            var oldFeedValue = localStorage.getItem(this.num + 1);
+            var newFeedValue1 = oldFeedValue.substring(0, oldFeedValue.length - 2) + "1}";
+            var newFeedValue0 = oldFeedValue.substring(0, oldFeedValue.length - 2) + "0}";
+            if (this.classList.contains("btn-default")) {
+                localStorage.setItem(this.num + 1, newFeedValue1);
+                this.classList.remove("btn-default");
+                this.classList.add("btn-warning"); }
+            else if (this.classList.contains("btn-warning")) {
+                this.classList.remove("btn-warning");
+                this.classList.add("btn-default");
+                localStorage.setItem(this.num + 1, newFeedValue0); }
+        }); } }
+
 function deleteFeed() {
     var deleteButtonsArray = document.getElementsByClassName("btn-danger");
     for (var i = 0; i < deleteButtonsArray.length; i++) {
@@ -93,4 +112,5 @@ listFeedsFromStorage();
 addButton.addEventListener("click", storeNewFeed);
 editFeed();
 saveFeed();
+favouriteFeed();
 deleteFeed();
