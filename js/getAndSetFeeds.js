@@ -4,19 +4,22 @@ var newsCount = document.getElementById("newsCount");
 var addButton = document.getElementById("addButton");
 var container = document.getElementsByClassName("container");
 var formHTML = '<form>\
+                    <div class="form-group col-sm-3"><input type="text" class="form-control" readonly></div>\
+                    <div class="form-group col-sm-4"><input type="url" class="form-control" readonly></div>\
+                    <div class="form-group col-sm-2"><input type="number" class="form-control" readonly></div>\
                     <div class="form-group col-sm-3">\
-                        <input type="text" class="form-control" readonly>\
-                    </div>\
-                    <div class="form-group col-sm-4">\
-                        <input type="url" class="form-control" readonly>\
-                    </div>\
-                    <div class="form-group col-sm-2">\
-                        <input type="number" class="form-control" readonly>\
-                    </div>\
-                    <div class="form-group col-sm-3">\
-                        <input type="button" class="btn btn-info edit" value="Edit">\
-                        <input type="button" class="btn btn-info save" value="Save" style="display: none">\
-                        <input type="button" class="btn btn-danger delete" value="Delete">\
+                        <button type="button" class="btn btn-info" aria-label="Left Align">\
+                            <span class="glyphicon glyphicon-pencil"></span>\
+                        </button>\
+                        <button type="button" class="btn btn-success" aria-label="Left Align" style="display: none;">\
+                            <span class="glyphicon glyphicon-ok"></span>\
+                        </button>\
+                        <button type="button" class="btn btn-warning" aria-label="Left Align">\
+                            <span class="glyphicon glyphicon-heart"></span>\
+                        </button>\
+                        <button type="button" class="btn btn-danger" aria-label="Left Align">\
+                            <span class="glyphicon glyphicon-trash"></span>\
+                        </button>\
                     </div>\
                 </form>';
 
@@ -40,7 +43,8 @@ function storeNewFeed() {
     var feedObj = {
         feedName: feedName.value,
         url: url.value,
-        newsCount: newsCount.value };
+        newsCount: newsCount.value,
+        favourite: 0 };
     var feedStr = JSON.stringify(feedObj);
     localStorage.setItem(localStorageLength, feedStr);
     listNewFeed();
@@ -60,25 +64,25 @@ function listNewFeed() {
         formsArray[formsArrayLength - 1].getElementsByTagName("input")[2].value = feedObj.newsCount; }
 
 function editFeed() {
-    var editButtonsArray = document.getElementsByClassName("edit");
+    var editButtonsArray = document.getElementsByClassName("btn-info");
     for (var i = 0; i < editButtonsArray.length; i++) {
         editButtonsArray[i].addEventListener("click", function() {
             this.parentNode.parentNode.getElementsByTagName("input")[0].readOnly = false;
             this.parentNode.parentNode.getElementsByTagName("input")[1].readOnly = false;
-            this.parentNode.parentNode.getElementsByClassName("save")[0].style.display = '';
+            this.parentNode.parentNode.getElementsByClassName("btn-success")[0].style.display = '';
             this.style.display = 'none'; }); } }
 
 function saveFeed() {
-    var saveButtonsArray = document.getElementsByClassName("save");
+    var saveButtonsArray = document.getElementsByClassName("btn-success");
     for (var i = 0; i < saveButtonsArray.length; i++) {
         saveButtonsArray[i].addEventListener("click", function() {
             this.parentNode.parentNode.getElementsByTagName("input")[0].readOnly = true;
             this.parentNode.parentNode.getElementsByTagName("input")[1].readOnly = true;
-            this.parentNode.parentNode.getElementsByClassName("edit")[0].style.display = '';
+            this.parentNode.parentNode.getElementsByClassName("btn-info")[0].style.display = '';
             this.style.display = 'none'; }); } }
 
 function deleteFeed() {
-    var deleteButtonsArray = document.getElementsByClassName("delete");
+    var deleteButtonsArray = document.getElementsByClassName("btn-danger");
     for (var i = 0; i < deleteButtonsArray.length; i++) {
         deleteButtonsArray[i].num = i;
         deleteButtonsArray[i].addEventListener("click", function() {

@@ -22,6 +22,10 @@
     </nav>
 
     <div class="container">
+        <div class="page-header">
+            <h1>Add, edit and delete feeds</h1>
+        </div>
+        <p>Can also mark them as favourite to show their content highlighted while browsing the news.</p>
         <form>
             <div class="form-group col-sm-3">
                 <label class="control-label" for="feedName">name</label>
@@ -36,7 +40,9 @@
                 <input type="number" class="form-control" id="newsCount" min="1">
             </div>
             <div class="form-group col-sm-3">
-                <button type="button" class="btn btn-primary" id="addButton">Add</button>
+                <button type="button" class="btn btn-primary" id="addButton" aria-label="Add Button" disabled>
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
             </div>
         </form>
         <div class="clearfix"></div>
